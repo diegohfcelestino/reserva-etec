@@ -1,0 +1,71 @@
+.reset {
+  background-image: url("../../assets/img/background.png");
+  height: 100%;
+  background-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .reset-form {
+    background-color: rgba(245, 242, 248, 0.789);
+    border-radius: 15px;
+    padding: 3rem;
+    margin: 0;
+    width: 29rem;
+    height: 35rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    img {
+      width: 13rem;
+      padding: 0 0 5rem 0;
+    }
+
+    .reset-input-group {
+      width: 100% !important;
+      height: 3rem;
+
+      padding: 0px !important;
+      display: flex;
+      flex-wrap: nowrap;
+      // align-items: flex-start;
+      vertical-align: bottom;
+
+      margin: 0 0 5rem 0 !important;
+      label {
+        color: #2b2b69;
+      }
+      .reset-icon {
+        width: 30px !important;
+        margin-right: 5px;
+        margin-top: 5px;
+      }
+      input {
+        border-radius: 5px;
+        height: 100%;
+      }
+    }
+    .recovery-button {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 3rem;
+      width: 100%;
+    }
+
+    hr {
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .reset-password {
+      strong {
+        &:hover {
+          color: #36363b;
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./App";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "react-toastify/dist/ReactToastify.min.css";
+import "./assets/css/styles.scss";
 import reportWebVitals from "./reportWebVitals";
 import { ToastContainer } from "react-toastify";
 

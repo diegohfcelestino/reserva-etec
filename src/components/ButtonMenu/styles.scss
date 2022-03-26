@@ -1,0 +1,24 @@
+.btn-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  background: rgb(255, 255, 255);
+  height: 12rem;
+  width: 12rem;
+  text-decoration: none;
+  color: #333;
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.5);
+
+  span {
+    text-align: center;
+    margin: 1rem;
+  }
+
+  &:hover {
+    background: #dddddd;
+  }
+}

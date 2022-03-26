@@ -1,0 +1,102 @@
+.collapse .navbar-nav .nav-item .nav-link {
+  //color: rgb(46, 42, 42);
+  color: #2b2b69;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+
+  border: none;
+  background: transparent;
+
+  &:hover {
+    // filter: grayscale() brightness(0.3);
+    color: #d20023;
+  }
+  &.text {
+    font-size: 1.19rem;
+    margin-left: 1rem;
+
+    /*     border: none;
+    background: transparent; */
+  }
+}
+
+.navbar-toggler {
+  border: none;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.hamburguer {
+  width: 1.875rem;
+  height: 1.25rem;
+  position: relative;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+
+  span {
+    display: block;
+    position: absolute;
+    height: 0.1875rem;
+    width: 100%;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+
+    background: #2b2b69;
+
+    &:nth-child(1) {
+      top: 0px;
+    }
+
+    &:nth-child(2) {
+      top: 0.6rem;
+      background: #d20023;
+    }
+
+    &:nth-child(3) {
+      top: 1.25rem;
+    }
+  }
+
+  &.open {
+    span {
+      &:nth-child(1) {
+        top: 0.6875rem;
+        -webkit-transform: rotate(135deg);
+        -moz-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+        transform: rotate(135deg);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+        left: -1rem;
+      }
+
+      &:nth-child(3) {
+        top: 0.6875rem;
+        -webkit-transform: rotate(-135deg);
+        -moz-transform: rotate(-135deg);
+        -o-transform: rotate(-135deg);
+        transform: rotate(-135deg);
+      }
+    }
+  }
+}

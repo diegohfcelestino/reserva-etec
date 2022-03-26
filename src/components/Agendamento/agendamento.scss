@@ -1,0 +1,20 @@
+/* .total {
+  min-height: calc(100vh - 10rem);
+} */
+
+.line {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 1.3rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem auto;
+
+  h3 {
+    font-weight: 700;
+    font-size: 2rem;
+  }
+  p {
+    font-weight: 300;
+    font-size: 1.2rem;
+  }
+}
