@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
 import { useAuth } from "../context/Auth";
 // import { useItems } from './cadastros/ItemsContext'
+//criar regra de administração de pagina
 
 const AgendamentoContext = React.createContext();
 
