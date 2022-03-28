@@ -2,7 +2,7 @@
 import { useState } from "react";
 import {
   FiAtSign,
-  FiFileText,
+  // FiFileText,
   FiEye,
   FiEyeOff,
   FiLock,
@@ -12,19 +12,19 @@ import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../../context/Auth";
 import { supabase } from "../../supabaseClient";
-import MaskedInput from "./MaskedInput";
+// import MaskedInput from "./MaskedInput";
 
 function SignUp() {
-  const initialValues = {
-    cpf: "",
-  };
-  const [values, setValues] = useState(initialValues);
-  function handleChange(event) {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value,
-    });
-  }
+  // const initialValues = {
+  //   cpf: "",
+  // };
+  // const [values, setValues] = useState(initialValues);
+  // function handleChange(event) {
+  //   setValues({
+  //     ...values,
+  //     [event.target.name]: event.target.value,
+  //   });
+  // }
 
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
@@ -44,7 +44,7 @@ function SignUp() {
     const name = nameRef.current.value;
     const cpf = cpfRef.current.value; */
 
-    if (!email || !password || !name || !values.cpf) {
+    if (!email || !password || !name) {
       return toast.error("Favor preencha todos os campos!");
     } else {
       // Chama a função signUp do context
@@ -54,7 +54,7 @@ function SignUp() {
         return toast.error(error.message);
       } else {
         const { error } = await supabase.auth.update({
-          data: { name: name, cpf: values.cpf, isAdmin: false },
+          data: { name: name, /* cpf: values.cpf, */ isAdmin: false },
         });
         if (error) {
           return toast.error(error.message, {
@@ -95,7 +95,7 @@ function SignUp() {
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
-                <div className="mb-4  loginInputGroup">
+                {/* <div className="mb-4  loginInputGroup">
                   <FiFileText
                     className="loginIcon"
                     size="25px"
@@ -112,7 +112,7 @@ function SignUp() {
                     aria-describedby="cpfHelp"
                     placeholder="CPF"
                   />
-                </div>
+                </div> */}
                 <div className="mb-4  loginInputGroup">
                   <FiAtSign className="loginIcon" size="25px" color="#555555" />
                   <input
