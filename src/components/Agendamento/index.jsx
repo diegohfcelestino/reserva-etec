@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { useRef, useState } from "react";
-import { useAgendamento } from "../../context/AgendamentoContext";
-import { useAuth } from "../../context/Auth";
-import { useItems } from "../../context/ItemsContext";
-import "./agendamento.scss";
+import { useRef, useState } from 'react'
+import { useAgendamento } from '../../context/AgendamentoContext'
+import { useAuth } from '../../context/Auth'
+import { useItems } from '../../context/ItemsContext'
+import './agendamento.scss'
 
 export default function Agendamento() {
   const {
@@ -12,65 +12,67 @@ export default function Agendamento() {
     selectedItem,
     setSelectedItem,
     insertAgendamento,
-    // setAgendamentos
+    setAgendamentos,
     getAgendamentos,
     getAgendamentosByTipo,
     getAgendamentosByTipoData,
-    checkDate,
-  } = useAgendamento();
-  const { tiposAg } = useItems();
+    checkDate
+  } = useAgendamento()
+  const { tiposAg } = useItems()
 
-  const { user } = useAuth();
-  const { items } = useItems();
+  const { user } = useAuth()
+  const { items } = useItems()
 
-  const dtInicioRef = useRef(new Date());
-  const dtFimRef = useRef(new Date());
-  const hrInicioRef = useRef("");
-  const hrFimRef = useRef("");
+  const dtInicioRef = useRef(new Date())
+  const dtFimRef = useRef(new Date())
+  const hrInicioRef = useRef('')
+  const hrFimRef = useRef('')
 
-  const [dtFim, setDtFim] = useState("");
+  const [dtFim, setDtFim] = useState('')
 
   const [agendamento, setAgendamento] = useState({
     dt_inicio: Date(),
     dt_fim: Date(),
-    hr_inicio: "",
-    hr_final: "",
-    id_user: "",
-    id_item: "",
-    id_tipo: "",
-  });
+    hr_inicio: '',
+    hr_final: '',
+    id_user: '',
+    id_item: '',
+    id_tipo: ''
+  })
 
-  const handleSelect = async (e) => {
-    setSelectedTipo(e.target.value);
-    !e.target.value ? getAgendamentos() : getAgendamentosByTipo(e.target.value);
-  };
+  const handleSelect = async e => {
+    setSelectedTipo(e.target.value)
+    !e.target.value ? getAgendamentos() : getAgendamentosByTipo(e.target.value)
+  }
 
   function saveAgendamento() {
-    if (selectedTipo === "2") {
-      const ag = { ...agendamento };
-      ag.dt_inicio = dtInicioRef.current.value;
-      ag.dt_fim = dtFimRef.current.value;
-      ag.hr_final = hrFimRef.current.value;
-      ag.hr_inicio = hrInicioRef.current.value;
-      ag.id_tipo = parseInt(selectedTipo);
-      ag.id_item = parseInt(selectedItem);
-      ag.id_user = user.id;
-      ag.data = { name: user.user_metadata.name };
-      insertAgendamento(ag);
-      setAgendamento(ag);
+    if (selectedTipo === '2') {
+      const ag = { ...agendamento }
+      ag.dt_inicio = dtInicioRef.current.value
+      ag.dt_fim = dtFimRef.current.value
+      ag.hr_final = hrFimRef.current.value
+      ag.hr_inicio = hrInicioRef.current.value
+      ag.id_tipo = parseInt(selectedTipo)
+      ag.id_item = parseInt(selectedItem)
+      ag.id_user = user.id
+      ag.email = user.email
+      ag.data = { name: user.user_metadata.name }
+      insertAgendamento(ag)
+      setAgendamento(ag)
     }
-    if (selectedTipo === "1") {
-      const ag = { ...agendamento };
-      ag.dt_inicio = dtFim; /* dtFimRef.current.value */
-      ag.dt_fim = dtFim; /* dtFimRef.current.value */
-      ag.hr_final = hrFimRef.current.value;
-      ag.hr_inicio = hrInicioRef.current.value;
-      ag.id_tipo = parseInt(selectedTipo);
-      ag.id_item = parseInt(selectedItem);
-      ag.id_user = user.id;
-      ag.data = { name: user.user_metadata.name };
-      setAgendamento(ag);
-      insertAgendamento(ag);
+    if (selectedTipo === '1') {
+      const ag = { ...agendamento }
+      ag.dt_inicio = dtFim /* dtFimRef.current.value */
+      ag.dt_fim = dtFim /* dtFimRef.current.value */
+      ag.hr_final = hrFimRef.current.value
+      ag.hr_inicio = hrInicioRef.current.value
+      ag.id_tipo = parseInt(selectedTipo)
+      ag.id_item = parseInt(selectedItem)
+      ag.id_user = user.id
+      ag.email = user.email
+      ag.data = { name: user.user_metadata.name }
+      setAgendamento(ag)
+      insertAgendamento(ag)
     }
   }
 
@@ -92,19 +94,19 @@ export default function Agendamento() {
                 name="tipo"
                 className="form-select"
                 value={tiposAg.id}
-                onChange={(e) => handleSelect(e)}
+                onChange={e => handleSelect(e)}
               >
                 <option value="">Selecione</option>
-                {tiposAg.map((tp) => {
+                {tiposAg.map(tp => {
                   return (
                     <option key={tp.id} value={tp.id}>
                       {tp.name}
                     </option>
-                  );
+                  )
                 })}
               </select>
             </div>
-            {selectedTipo === "2" && (
+            {selectedTipo === '2' && (
               <>
                 <div className="col-auto">
                   <label htmlFor="veiculo" className="form-label">
@@ -114,17 +116,17 @@ export default function Agendamento() {
                     className="form-select"
                     name="veiculo"
                     value={selectedItem}
-                    onChange={(e) => setSelectedItem(e.target.value)}
+                    onChange={e => setSelectedItem(e.target.value)}
                   >
                     <option>Selecione</option>
                     {items
-                      .filter((el) => el.id_tipo === parseInt(selectedTipo))
-                      .map((veiculo) => {
+                      .filter(el => el.id_tipo === parseInt(selectedTipo))
+                      .map(veiculo => {
                         return (
                           <option key={veiculo.id} value={veiculo.id}>
                             {veiculo.description}
                           </option>
-                        );
+                        )
                       })}
                   </select>
                 </div>
@@ -174,7 +176,7 @@ export default function Agendamento() {
                 </div>
               </>
             )}
-            {selectedTipo === "1" && (
+            {selectedTipo === '1' && (
               <>
                 <div className="col-auto">
                   <label htmlFor="sala" className="form-label">
@@ -184,17 +186,17 @@ export default function Agendamento() {
                     className="form-select"
                     name="veiculo"
                     value={selectedItem.id}
-                    onChange={(e) => setSelectedItem(e.target.value)}
+                    onChange={e => setSelectedItem(e.target.value)}
                   >
                     <option value="">Selecione</option>
                     {items
-                      .filter((el) => el.id_tipo === parseInt(selectedTipo))
-                      .map((sala) => {
+                      .filter(el => el.id_tipo === parseInt(selectedTipo))
+                      .map(sala => {
                         return (
                           <option key={sala.id} value={sala.id}>
                             {sala.description}
                           </option>
-                        );
+                        )
                       })}
                   </select>
                 </div>
@@ -207,9 +209,9 @@ export default function Agendamento() {
                     name="data_fim"
                     /*  ref={dtFimRef} */ className="form-control"
                     value={dtFim}
-                    onChange={(e) => {
-                      setDtFim(e.target.value);
-                      checkDate(e.target.value);
+                    onChange={e => {
+                      setDtFim(e.target.value)
+                      checkDate(e.target.value)
                     }}
                   />
                 </div>
@@ -247,9 +249,9 @@ export default function Agendamento() {
               <button
                 type="submit"
                 className="btn btn-primary"
-                onClick={(e) => {
-                  e.preventDefault();
-                  saveAgendamento();
+                onClick={e => {
+                  e.preventDefault()
+                  saveAgendamento()
                 }}
               >
                 Agendar
@@ -260,5 +262,5 @@ export default function Agendamento() {
       </div>
       <div className="line mt-2"></div>
     </div>
-  );
+  )
 }
